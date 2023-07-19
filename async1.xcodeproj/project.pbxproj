@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5C98B65D2B2B58CF000DAC0E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C98B65C2B2B58CF000DAC0E /* main.swift */; };
+		5CBE14D32B2CCA9300C927EC /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5CBE14D22B2CCA9300C927EC /* ArgumentParser */; };
+		5CBE14D52B2CCA9300C927EC /* generate-manual in Frameworks */ = {isa = PBXBuildFile; productRef = 5CBE14D42B2CCA9300C927EC /* generate-manual */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CBE14D32B2CCA9300C927EC /* ArgumentParser in Frameworks */,
+				5CBE14D52B2CCA9300C927EC /* generate-manual in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +82,10 @@
 			dependencies = (
 			);
 			name = async1;
+			packageProductDependencies = (
+				5CBE14D22B2CCA9300C927EC /* ArgumentParser */,
+				5CBE14D42B2CCA9300C927EC /* generate-manual */,
+			);
 			productName = async1;
 			productReference = 5C98B6592B2B58CF000DAC0E /* async1 */;
 			productType = "com.apple.product-type.tool";
@@ -91,6 +99,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
+				ORGANIZATIONNAME = mrLSD;
 				TargetAttributes = {
 					5C98B6582B2B58CF000DAC0E = {
 						CreatedOnToolsVersion = 15.1;
@@ -98,7 +107,7 @@
 				};
 			};
 			buildConfigurationList = 5C98B6542B2B58CF000DAC0E /* Build configuration list for PBXProject "async1" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -106,6 +115,9 @@
 				Base,
 			);
 			mainGroup = 5C98B6502B2B58CF000DAC0E;
+			packageReferences = (
+				5CBE14D12B2CCA9300C927EC /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 5C98B65A2B2B58CF000DAC0E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,6 +173,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -224,6 +237,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -249,6 +263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -258,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -285,6 +301,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CBE14D12B2CCA9300C927EC /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CBE14D22B2CCA9300C927EC /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CBE14D12B2CCA9300C927EC /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		5CBE14D42B2CCA9300C927EC /* generate-manual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CBE14D12B2CCA9300C927EC /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = "generate-manual";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C98B6512B2B58CF000DAC0E /* Project object */;
 }
