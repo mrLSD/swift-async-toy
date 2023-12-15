@@ -117,6 +117,30 @@ func runTasks(runner: Runner) async {
             }
             await runner.stop()
         }
+        group.addTask {
+            let handler = MessageREQREP()
+            let _subscribe1 = handler.req.sink(receiveCompletion: { completion in
+                print("RESP completed: \(completion)")
+            }, receiveValue: { value in
+                print("RESP received: \(value)")
+                handler.send_resp(msg: "Response for \(value)")
+            })
+            let _subscribe2 = handler.rep.sink(receiveCompletion: { completion in
+                print("REQ completed: \(completion)")
+            }, receiveValue: { value in
+                print("REQ received: \(value)")
+            })
+            var isRun = true
+            while isRun {
+                handler.send_req(msg: "## \(isRun)")
+                try? await Task.sleep(nanoseconds: 500_000_000)
+                isRun = await !runner.queue.isTerminated()
+            }
+            // To calncele subscription:
+            // subscribe1.cancel()
+            handler.req.send(completion: .finished)
+            handler.rep.send(completion: .finished)
+        }
     }
 }
 
@@ -132,8 +156,12 @@ struct MessageREQREP {
     let req = PassthroughSubject<RequestMessage, Never>()
     let rep = PassthroughSubject<ResponseMessage, Never>()
 
-    func send(msg: String) {
-        req.send(RequestMessage(message:msg))
+    func send_req(msg: String) {
+        req.send(RequestMessage(message: msg))
+    }
+
+    func send_resp(msg: String) {
+        rep.send(ResponseMessage(message: msg))
     }
 }
 
